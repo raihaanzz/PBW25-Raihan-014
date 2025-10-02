@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+
+@extends('layouts.main')    
+@section('content')
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>BERITA</h1>
+
+            @foreach($beritas as $berita)
+                <h2>{{ $berita["judul"] }}</h2>
+                <h3>{{ $berita["penulis"] }}</h3>
+                <p>{{ $berita["isi"] }}</p>
+            @endforeach
+        </div>
+</div>
+
+
+@endsection
