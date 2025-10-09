@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Berita;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,31 +18,27 @@ Route::get('/profile', function () {
     ]);
 });
 Route::get('/berita', function () {
-
-
-    $data_berita = [
-        [
-            "judul" => "Judul Berita Pertama",
-            "penulis" => "Raihan Az Dzaky",
-            "isi" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis vero molestias deleniti laboriosam, similique quod, amet aperiam vitae sint odio placeat, adipisci enim explicabo libero. A saepe mollitia ducimus aliquam?"
-        ],
-        [
-            "judul" => "Judul Berita Kedua",
-            "penulis" => "Aditama",
-            "isi" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis vero molestias deleniti laboriosam, similique quod, amet aperiam vitae sint odio placeat, adipisci enim explicabo libero. A saepe mollitia ducimus aliquam?"
-        ],
-        [
-            "judul" => "Judul Berita Ketiga",
-            "penulis" => "Sopo jarwo",
-            "isi" => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis vero molestias deleniti laboriosam, similique quod, amet aperiam vitae sint odio placeat, adipisci enim explicabo libero. A saepe mollitia ducimus aliquam?"
-        ]
-    ];
-
-
-
     return view('berita', [
         "title" => "Berita",
-        "beritas" => $data_berita,
+        "beritas" => Berita::ambildata(),
+    ]);
+});
+Route::get('/berita/{slug}', function ($slug) {
+
+
+    // $new_berita = [];
+
+    // foreach ($data_berita as $berita) {
+    //     if ($berita["slug"] === $slugp) {
+    //         $new_berita = $berita; // $berita isinya array = [ "judul", "slug", "penulis", "isi"]
+    //     }
+    // }
+
+
+
+    return view('singleberita', [
+        "title" => "Berita",
+        "new_berita" => Berita::caridata($slug),
     ]);
 });
 Route::get('/contact', function () {
