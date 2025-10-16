@@ -24,6 +24,8 @@
   <li class="nav-item">
     <a class="nav-link" href="/contact">Kontak</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
 </ul>
     <div class="container mt-4">
         @yield('content')

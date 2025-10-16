@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\Berita;
-
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,32 +18,11 @@ Route::get('/profile', function () {
         "img" => "img/raihan.jpg"
     ]);
 });
-Route::get('/berita', function () {
-    return view('berita', [
-        "title" => "Berita",
-        "beritas" => Berita::ambildata(),
-    ]);
-});
-Route::get('/berita/{slug}', function ($slug) {
-
-
-    // $new_berita = [];
-
-    // foreach ($data_berita as $berita) {
-    //     if ($berita["slug"] === $slugp) {
-    //         $new_berita = $berita; // $berita isinya array = [ "judul", "slug", "penulis", "isi"]
-    //     }
-    // }
-
-
-
-    return view('singleberita', [
-        "title" => "Berita",
-        "new_berita" => Berita::caridata($slug),
-    ]);
-});
+Route::get('/berita', [BeritaController::class, 'index']);
+Route::get('/berita/{slug}', [BeritaController::class, 'tampildata']);
 Route::get('/contact', function () {
     return view('kontak', [
         "title" => "Kontak",
     ]);
 });
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
