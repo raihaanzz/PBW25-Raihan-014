@@ -25,4 +25,4 @@ Route::get('/contact', function () {
         "title" => "Kontak",
     ]);
 });
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
