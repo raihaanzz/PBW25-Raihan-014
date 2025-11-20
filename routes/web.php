@@ -27,4 +27,7 @@ Route::get('/contact', function () {
 });
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 Route::get('/tambahmahasiswa', [MahasiswaController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
+Route::get('/tampildata/{id}', [MahasiswaController::class, 'tampildata'])->name('tampildata');
 Route::post('/insertdata', [MahasiswaController::class, 'insertdata'])->name('insertdata');
+Route::post('/editdata/{id}', [MahasiswaController::class, 'editdata'])->name('editdata');
+

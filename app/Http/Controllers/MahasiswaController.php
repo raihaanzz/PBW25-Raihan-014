@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 
+
 class MahasiswaController extends Controller
 {
     public function index() {
@@ -26,7 +27,25 @@ class MahasiswaController extends Controller
 
         // insert data ke database
         Mahasiswa::create($request->all());
-        return redirect()->route('mahasiswa')->with('success!', 'Data Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Ditambahkan');
+
+    }
+
+    public function tampildata($id) {
+
+        $data = Mahasiswa::find($id);
+        return view("editdata",[
+            "title" => "Edit Data Mahasiswa",
+            "data" => $data,
+        ]);
+    }
+
+    public function editdata(Request $request, $id) {
+
+        $data = Mahasiswa::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Diedit');
 
     }
 }

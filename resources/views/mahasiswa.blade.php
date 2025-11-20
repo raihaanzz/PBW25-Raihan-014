@@ -7,9 +7,10 @@
     <button type="button" class="btn btn-success mb-2">Tambah Data</button></a>
     @if ($message = Session::get('success'))
     <div class="alert alert-success" role="alert">
-  {{ $message }}
+        {{ $message }}
     </div>
     @endif
+
     <table class="table">
   <thead>
     <tr>
@@ -33,7 +34,7 @@
       <td>{{$mahasiswa["email"]}}</td>
       <td>{{$mahasiswa["nohp"]}}</td>
       <td>
-        <button type="button" class="btn btn-primary">Edit</button>
+        <a href="tampildata/{{ $mahasiswa['id']}}" class="btn btn-primary">Edit</a>
         <button type="button" class="btn btn-danger">Hapus</button>
       </td>
       <?php $i++ ?>
