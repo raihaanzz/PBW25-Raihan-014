@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>{{$title}}</title>
+    
   </head>
   <body>
     <ul class="nav justify-content-center bg-dark white">
@@ -23,10 +24,32 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/contact">Kontak</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
+  </li>@guest
+    <li class="nav-item">
+      <a class="nav-link {{ ($title ?? '') === 'Login' ? 'active' : ''}}" href="{{ route('login') }}">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {{ ($title ?? '') === 'Register' ? 'active' : ''}}" href="{{ route('register') }}">Register</a>
+    </li>
+  @endguest
+
+  @auth
+    <li class="nav-item">
+      <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
+    </li>
+    <li class="nav-item text-white nav-link">
+       Halo, {{ Auth::user()->name }}
+    </li>
+    <li class="nav-item">
+       <form action="{{ route('logout') }}" method="POST" class="d-inline">
+           @csrf
+           <button type="submit" class="btn btn-link text-danger p-0 nav-link">Logout</button>
+       </form>
+    </li>
+  @endauth
+
 </ul>
+
     <div class="container mt-4">
         @yield('content')
     </div>  

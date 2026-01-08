@@ -1,7 +1,11 @@
 @extends('layouts.main')    
 @section('content')
 
-<h1>HELLO</h1>
+<div class="text-center">
+    <h1>SELAMAT DATANG</h1>
+</div>
+
+
 
 
 @endsection
