@@ -15,14 +15,14 @@ class AuthController extends Controller
     }
 
     // Menampilkan Halaman Login
-public function showLogin() {
-    return view('auth.login', ["title" => "Login"]);
-}
+    public function showLogin() {
+        return view('auth.login', ["title" => "Login"]);
+    }
 
-// Menampilkan Halaman Register
-public function showRegister() {
-    return view('auth.register', ["title" => "Register"]);
-}
+    // Menampilkan Halaman Register
+    public function showRegister() {
+        return view('auth.register', ["title" => "Register"]);
+    }
 
     // Logika Registrasi sekaligus Login
     public function register(Request $request) {
@@ -41,7 +41,8 @@ public function showRegister() {
         // Otomatis Login setelah daftar
         Auth::login($user);
 
-        return redirect()->intended('/dashboard');
+        // Redirect ke home dengan pesan sukses
+        return redirect('/')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name);
     }
 
     // Logika Login Biasa
@@ -53,16 +54,21 @@ public function showRegister() {
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            
+            // Redirect ke home dengan pesan sukses
+            return redirect('/')->with('success', 'Login berhasil! Selamat datang kembali, ' . Auth::user()->name);
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah.']);
+        return back()->withErrors(['email' => 'Email atau password salah.'])->withInput();
     }
 
     public function logout(Request $request) {
+        $userName = Auth::user()->name;
+        
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        
+        return redirect('/')->with('success', 'Logout berhasil. Sampai jumpa lagi, ' . $userName . '!');
     }
 }
