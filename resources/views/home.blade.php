@@ -213,28 +213,9 @@
 
         <div class="row features-section">
             <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4 class="feature-title">Kelola Mahasiswa</h4>
-                    <p class="feature-description">Tambah, edit, dan hapus data mahasiswa dengan mudah</p>
-                    <a href="/mahasiswa" class="btn btn-primary mt-2">
-                        <i class="fas fa-arrow-right"></i> Lihat Data
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
-                    <h4 class="feature-title">Berita Terkini</h4>
-                    <p class="feature-description">Baca berita dan informasi terbaru dari kami</p>
-                    <a href="/berita" class="btn btn-primary mt-2">
-                        <i class="fas fa-arrow-right"></i> Baca Berita
-                    </a>
-                </div>
+                
+            
+                
             </div>
         </div>
     @else

@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <a class="navbar-brand font-weight-bold" href="/">
-            <i class="fas fa-code"></i> MyApp
+            <i class="fas fa-code"></i> TI DAILY
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,11 +50,6 @@
                         <i class="fas fa-users"></i> Mahasiswa
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title ?? '') === 'Dashboard' ? 'active' : ''}}" href="/dashboard">
-                        <i class="fas fa-tachometer-alt"></i> Dashboard
-                    </a>
-                </li>
                 @endauth
             </ul>
 
@@ -81,9 +76,6 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/profile">
                                 <i class="fas fa-user-circle"></i> My Profile
-                            </a>
-                            <a class="dropdown-item" href="/dashboard">
-                                <i class="fas fa-tachometer-alt"></i> Dashboard
                             </a>
                             <div class="dropdown-divider"></div>
                             <form action="{{ route('logout') }}" method="POST" class="px-3">
